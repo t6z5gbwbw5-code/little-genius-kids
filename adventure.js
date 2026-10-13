@@ -25,7 +25,7 @@
  $a('adventureOpen').addEventListener('click',open);$a('adventureBack').addEventListener('click',close);
  $a('adventureJump').addEventListener('click',()=>{animate('adventureActor','lgk-jump');message('jumped')});
  $a('adventureWalk').addEventListener('click',()=>{state.x=state.x===36?47:36;$a('adventureActor').style.left=state.x+'%';message('walked')});
- $a('adventureWave').addEventListener('click',()=>{ $a('adventureActor').textContent='🙋';message('waved');});
+ $a('adventureWave').addEventListener('click',()=>{ animate('adventureActor','lgk-wave');message('waved');});
  $a('adventureHatch').addEventListener('click',()=>{if(state.pet){message('already');return}state.pet=true;try{localStorage.setItem('lgk-adventure-pet','yes')}catch(_e){};setPet();animate('adventurePet','lgk-hop');message('hatched')});
  $a('adventureCalm').addEventListener('change',e=>{state.calm=e.target.checked;setCalm();try{localStorage.setItem('lgk-adventure-calm',state.calm?'yes':'no')}catch(_e){};if(state.calm)message('reduced')});
  document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{section.classList.add('hide');translate()}));
