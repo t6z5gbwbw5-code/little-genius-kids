@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Little Genius Kids - Level 2 Test</title>
+  <link rel="stylesheet" href="./adventure.css">
+  <link rel="stylesheet" href="./level2.css">
+</head>
+<body>
+  <main style="max-width:900px;margin:40px auto;padding:20px;text-align:center">
+    <h1>🌈 Little Genius Kids</h1>
+    <h2>Level 2 Adventure Test</h2>
+    <p>This is a separate test page. Your original game is unchanged.</p>
+    <p id="test-status">Checking Level 2 files...</p>
+  </main>
+
+  <script>
+    const status = document.getElementById("test-status");
+    Promise.all([
+      fetch("./level2.js"),
+      fetch("./level2.css")
+    ]).then(results => {
+      status.textContent = results.every(r => r.ok)
+        ? "✅ Level 2 files are available."
+        : "⚠️ Some Level 2 files are missing.";
+    }).catch(() => {
+      status.textContent = "⚠️ Could not check the files.";
+    });
+  </script>
+</body>
+</html>
